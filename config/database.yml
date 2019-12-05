@@ -10,23 +10,24 @@
 #   https://dev.mysql.com/doc/refman/5.7/en/password-hashing.html
 #
 default: &default
-  adapter: mysql2
-  encoding: utf8mb4
+  adapter: postgresql
+  encoding: unicode
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
-  username: root
-  password: password
-  socket: /var/run/mysqld/mysqld.sock
+  host: localhost
+  port: 5432
+  username: postgres
+  password: postgres
 
 development:
   <<: *default
-  database: valid_action_development
+  database: administrate_2
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
 # Do not set this db to the same as development or production.
 test:
   <<: *default
-  database: valid_action_test
+  database: administrate
 
 # As with config/credentials.yml, you never want to store sensitive information,
 # like your database password, in your source code. If your source code is
@@ -49,6 +50,6 @@ test:
 #
 production:
   <<: *default
-  database: valid_action_production
-  username: valid_action
+  database: administrate
+  username: administrate
   password: <%= ENV['VALID_ACTION_DATABASE_PASSWORD'] %>
